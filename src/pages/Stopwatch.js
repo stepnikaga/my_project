@@ -1,8 +1,22 @@
-import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
-function Stopwatch() {
-    return <h2>Stoper</h2>
+
+
+const Container = styled.div`
+
+    background-repeat: no-repeat;
+`
+
+
+
+const Stoper = () => {
+    return (
+        <div>
+            <Container>
+
+            </Container>    
+        </div>
+    )
 }
 
-export default Stopwatch
+export default Stoper

@@ -1,42 +1,49 @@
-import styled from 'styled-components'
-import React, { useState, useEffect } from 'react'
+import React from "react"
+import { Button } from "@material-ui/core"
+import { useState } from "react"
+import styled from "styled-components"
 
 
+const MainCounter = styled.div`
+  /* position: relative;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  color: white; */
+  background-color: #b2b2b2;
+`
 
+const Result = styled.h5`
+    color: green;
 
-function Counter({ defaultValue = 0, step = 1 }) {
-    const [value, setValeu] = useState(defaultValue)
+`
 
-    useEffect(() =>{
-        const minusBtn = document.getElementById('minus')
-        const onClick = function () {
-            console.log('clik from useEffect')
-        }
-        minusBtn.addEventListener('click', onClick)
+function Counter() {
 
-        return () => {
-            minusBtn.removeEventListener('click', onClick)
-        }
-    })
-   
-    const onMinus = () => {
-        setValeu(value - step)
-    }
+    const [count, setCount] = useState(0)
+    const decrement = () => setCount(count - 1)
+    const increment = () => setCount(count + 1)
+    const reset = () => setCount(0)
 
-    const onAdd = () => {
-        setValeu(value + step)
-    }
-
-    return(
+     
+    return (
+        <div className='counter'>
+            <MainCounter>
         
-        <div>
-            <h1>Counter</h1>
-            <button onClick={onMinus} id="minus"> - </button>
-            {value}
+                {count % 5 === 0 && count !== 0 ? <Result><h5>{count}</h5></Result> : <Result>{count}</Result>}
 
-            <button onClick={onAdd} id="add"> + </button>
+                <Button onClick={decrement} variant={"contained"} color={'secondary'}>-</Button>
+
+                <Button>{count}</Button>
+            
+                <Button onClick={increment} plus variant={"contained"} color={'secondary'}>+</Button>
+                <br></br>
+                <br></br>
+                <Button onClick={reset} variant={"contained"} color={'secondary'}>RESETUJ</Button>
+            </MainCounter>
         </div>
+        
     )
 }
-
 export default Counter

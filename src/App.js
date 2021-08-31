@@ -1,30 +1,59 @@
 import './App.css';
-import 'rc-slider/assets/index.css';
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { useHistory } from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
+
 
 import SixCards from './components/SixCards';
 import Navigation from './components/Navigation';
-import FotoContainer from './components/FotoContainer';
-
+import Home from './pages/Home';
+import About from './pages/About';
+import Counter from './pages/Counter';
+import Login from './pages/Login';
+import Registration from './pages/Registration'
+import Stopwatch from './pages/Stopwatch'
+import Characters from './pages/Characters';
 
 
 function App() {
-  
+
   console.log()
 
   return (
-    <Router>
-      <div className="App">
-     
-        <Navigation />
-        <FotoContainer />
+    
+    <div className="App">
+      <Navigation />
+      <Route path="/" exact>
+        <Home />
         <SixCards />
-        
+      </Route>
 
-      </div>  
-    </Router>
+      <Route path="/Counter">
+        <Counter />
+      </Route>
+      
+      <Route path="/About">
+        <About />
+      </Route>
+
+      <Route path="/Characters">
+        <Characters />
+      </Route>
+
+      <Route path="/Stoper">
+        <Stopwatch />
+      </Route>
+
+      <Route path="/Login">
+        <Login />
+      </Route>
+
+      <Route path="/Registration">
+        <Registration />
+      </Route>
+
+
+    </div>  
+   
   );
 }
 
