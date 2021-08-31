@@ -6,7 +6,7 @@ const SwitchContainer = styled.div`
     right: 0;
 `
   
-const FilterSelect = ({ handleFilterSwitch, switchChecked }) => {
+const FilterSwitch = ({ handleFilterSwitch, switchChecked }) => {
     return (
         <SwitchContainer>
             <FormControl component='fieldset'>
@@ -18,4 +18,4 @@ const FilterSelect = ({ handleFilterSwitch, switchChecked }) => {
         </SwitchContainer>
     )
 }
-export default FilterSelect
+export default FilterSwitch

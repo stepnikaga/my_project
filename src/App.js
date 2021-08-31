@@ -12,6 +12,7 @@ import Login from './pages/Login';
 import Registration from './pages/Registration'
 import Stopwatch from './pages/Stopwatch'
 import Characters from './pages/Characters';
+import CharacterCard from './components/CharacterCard';
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
       <Route path="/Characters">
         <Characters />
       </Route>
+      <Route path="/Characters/:name/:id" children={<CharacterCard />}>  </Route>
 
       <Route path="/Stoper">
         <Stopwatch />

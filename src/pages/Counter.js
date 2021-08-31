@@ -5,15 +5,9 @@ import styled from "styled-components"
 
 
 const MainCounter = styled.div`
-  /* position: relative;
-  display: flex;
-  justify-content: center;
-  height: 100vh;
-  width: 100%;
-  color: white; */
   background-color: #b2b2b2;
+  margin: 100px 100px 0px 100px; 
 `
-
 const Result = styled.h5`
     color: green;
 

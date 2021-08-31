@@ -3,10 +3,17 @@ import axios from 'axios'
 import styled from 'styled-components';
 
 import ListaPostaci from '../components/ListaPostaci';
+import arickmorty from '../Image/arickmorty.jpg';
+import FilterSwitch from '../components/FilterSwitch'
 
-const PageBtn = styled.button `
-    line-height: 20px;
-    margin: 100px 100px 0px 100px; 
+
+const Header = styled.div`
+  display: flex;
+  background-color: #b2b2b2;
+`
+const PageButton = styled.button `
+    line-height: 40px;
+    margin: 100px 100px 20px 80px; 
     display: inline-block;
     height: 60px;
     width: 150px;
@@ -29,10 +36,23 @@ const PageBtn = styled.button `
     }
 `
 
+const MainContainer = styled.div`
+    width: 100%;
+    height: 100%;
+    background-image: url(${arickmorty});
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+`
+const NEXT = 'NASTĘPNA'
+const PREV = 'POPRZEDNIA'
+const TITLE = 'LISTA POSTACI'
+
 function Characters() {
     const [page, setCurrentPage] = useState(1)
     const [postaci, setPostaci] = useState(null)
-   
+      
     const next = () => {
        if(page === 34) {
            setCurrentPage(page)
@@ -49,15 +69,23 @@ function Characters() {
         axios.get(`https://rickandmortyapi.com/api/character/?page=${page}`).then(res => {
             setPostaci(res.data)
         })
+
     }, [page])
     if(!postaci) {
         <h1>Loading...</h1>
     }
+
+    
     return(
         <div>
-            <h3><input type='text' placeholder='Search by id...'></input><PageBtn onClick={previous}>Poprzednia</PageBtn>LISTA POSTACI ({postaci?.info.count}) <PageBtn onClick={next}>Następna</PageBtn><input type='text' placeholder='Search by name...'></input></h3>
-            <ListaPostaci postaci={postaci}/>
-            <h3 id='footer'><PageBtn onClick={previous}>Poprzednia</PageBtn><PageBtn onClick={next}>Następna</PageBtn></h3>
+            <Header 
+            filterSwitch = {FilterSwitch} 
+            />
+            <MainContainer>
+                <h3><input type='text' placeholder='Szukaj...'></input><PageButton onClick={previous}>{PREV}</PageButton>{TITLE} ({postaci?.info.count}) <PageButton onClick={next}>{NEXT}</PageButton></h3>
+                    <ListaPostaci postaci={postaci}/>
+                <h3 id='footer'><PageButton onClick={previous}>{PREV}</PageButton><PageButton onClick={next}>{NEXT}</PageButton></h3>
+            </MainContainer>
         </div>
     )
 }
