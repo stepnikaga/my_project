@@ -1,7 +1,7 @@
 import React from 'react'
 import CharacterCard from './CharacterCard'
 
-function ListaPostaci ({ postaci }) {
+function CharacterList ({ postaci }) {
     return (
         <div>
             <div className='charContainer'>
@@ -13,4 +13,4 @@ function ListaPostaci ({ postaci }) {
         </div>
     )
 }
-export default ListaPostaci
+export default CharacterList

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios'
 import styled from 'styled-components';
 
-import ListaPostaci from '../components/ListaPostaci';
+import CharacterList from '../components/CharacterList';
 import arickmorty from '../Image/arickmorty.jpg';
 import FilterSwitch from '../components/FilterSwitch'
 
@@ -82,8 +82,9 @@ function Characters() {
             filterSwitch = {FilterSwitch} 
             />
             <MainContainer>
-                <h3><input type='text' placeholder='Szukaj...'></input><PageButton onClick={previous}>{PREV}</PageButton>{TITLE} ({postaci?.info.count}) <PageButton onClick={next}>{NEXT}</PageButton></h3>
-                    <ListaPostaci postaci={postaci}/>
+                <h3><PageButton onClick={previous}>{PREV}</PageButton>{TITLE} ({postaci?.info.count}) <PageButton onClick={next}>{NEXT}</PageButton></h3>
+                    <input type='text' placeholder='Szukaj...'></input>
+                    <CharacterList postaci={postaci}/>
                 <h3 id='footer'><PageButton onClick={previous}>{PREV}</PageButton><PageButton onClick={next}>{NEXT}</PageButton></h3>
             </MainContainer>
         </div>

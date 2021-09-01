@@ -15,7 +15,7 @@ const Switch = ({ handleSwitch, switchChecked }) => {
         <SwitchContainer>
             <FormControl component='fieldset'>
                 <FormGroup>
-                    <FormControlLabel control={<Switch checked={switchChecked} onChange={handleSwitch} />}/>
+                    <FormControlLabel control={<FilterSwitch checked={switchChecked} onChange={handleSwitch} />}/>
                 </FormGroup>
             </FormControl>
             <FormLabel component='legend'>A - Z</FormLabel>
