@@ -36,34 +36,17 @@ const TextContainer = styled.div`
 `
 
 
-function About  () {
+function About  ({person = AboutMe}) {
   
   return (
     <MainContainer>
       <TextContainer>
-        <Typography variant='h2'>{AboutMe.name}</Typography> 
-        <Typography variant='h2'>{AboutMe.secondName}</Typography>
-        <Typography>{AboutMe.description}</Typography>  
+        <Typography variant='h2'>{person.name}</Typography> 
+        <Typography variant='h2'>{person.secondName}</Typography>
+        <Typography>{person.description}</Typography>  
       </TextContainer> 
       <ImageContainer />
     </MainContainer>
   );
 }
 export default About
-
-
-// function ListaPostaci({ postaci }) {
-    
-//   return(
-//       <div>
-//           <h2>Lista Postaci({postaci.info.count})</h2>
-//           {
-//               postaci.results
-//                   .map(({ name, species, image }, index) => 
-//                       <KartaPostaci key={name} species={species} image={image} index={index} />)
-//           }
-//       </div>
-      
-//   )
-// }
-// export default ListaPostaci

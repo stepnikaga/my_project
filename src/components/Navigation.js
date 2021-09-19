@@ -39,7 +39,7 @@ function Navigation() {
           </Typography>
 
           <Link to="/about"><Button>O mnie</Button></Link>
-          <Link to="/stoper"><Button>Stoper</Button></Link>
+          <Link to="/stopwatch"><Button>Stoper</Button></Link>
           <Link to="/counter"><Button>Licznik</Button></Link>
           <Link to="/characters"><Button>Lista postaci</Button></Link>
           <Link to="/registration"><Button>Rejestracja</Button></Link>

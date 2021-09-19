@@ -1,7 +1,9 @@
 import styled from 'styled-components'
 import { Button } from '@material-ui/core'
+import axios from 'axios'
 
 import login from '../Image/login.jpg'
+
 
 const Container = styled.div`
     background-image: url(${login});
@@ -20,14 +22,31 @@ const Input = styled.input`
     font-size: 1rem;
 `
 
-const Login = () => {
+function Login () {
+    // const [users, setUsers] = useState(null)
+
+    // useEffect(() => {
+    //     axios.get('http://localhost:3000/users').then(result => {
+    //         console.log('result', result)
+    //         setUsers(result.data)
+    //     })
+    // }, [])
+
+
+    // if () {
+    //     return (
+    //        <div>Brak danych</div>
+    //     )
+    // }
+
+
     return (
         <div>
             <Container>
                 <FormContainer>
                     <Input type='text' placeholder='e-mail'/>
                     <Input type='password' placeholder='hasło'/>
-                    <Button variant={'contained'} color={'secondary'}>
+                    <Button onClick variant={'contained'} color={'secondary'}>
                         Zaloguj się 
                     </Button>
                 </FormContainer>

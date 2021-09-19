@@ -1,5 +1,7 @@
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Button } from '@material-ui/core'
+import axios from 'axios'
 
 import aboutMe1 from '../Image/aboutMe1.jpg'
 
@@ -20,7 +22,35 @@ const Input = styled.input`
     font-size: 1rem;
 `
 
-const Registration = () => {
+function Registration () {
+    const [users, setUsers] = useState(null)
+
+    useEffect(() => {
+        axios.get('http://localhost:3000/users').then(result => {
+            console.log('result', result)
+            setUsers(result.data)
+        })
+    }, [])
+
+    const addUser = () => {
+        const newUser = {
+            "id": 6,
+            "name":"Monika",
+            "lastName": "Iks",
+            "email": "iks@gmail.com",
+            "password": "qscnko09"
+        }
+        axios.post('http://localhost:3000/users', newUser)
+    }
+
+
+    if (!users) {
+        return (
+           <div>Brak użytkownika</div>
+        )
+    }
+
+
     return (
         <div>
             <Container>
@@ -29,7 +59,7 @@ const Registration = () => {
                     <Input type='text' placeholder='Nazwisko'/>
                     <Input type='text' placeholder='e-mail'/>
                     <Input type='password' placeholder='hasło'/>
-                    <Button variant={'contained'} color={'secondary'}>
+                    <Button onClick={addUser} variant={'contained'} color={'secondary'}>
                         Zarejestruj się 
                     </Button>
                 </FormContainer>

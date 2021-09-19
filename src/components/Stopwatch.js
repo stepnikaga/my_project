@@ -1,37 +1,44 @@
-// const currentSec = 0
-// const currentMin = 0
-// const currentMil = 0;
-// const keepGoin = false
+import { useState, useEffect } from "react";
+import styled from "styled-components";
 
-// function Stopwatch () {
-//     if (keepGoin){
-//         currentMil += 1;
-//         if (currentMil == 10){
-//             currentMil = 0
-//             currentSec += 1
-//         }
-//         if (currentSec == 60) {
-//             currentSec == 0
-//             currentMin += 1
-//         }
+const Container = styled.div`
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+`;
 
-//         StrSec="" + currentSec;
-//         StrMin="" + currentMin;
-//         StrMil="" + currentMil;
-//         if (StrSec.length!=2){
-//             StrSec = "0" + currentSec
-//         }
-//         if (StrMin.length!=2) {
-//             StrMin="0" + currentMin
-//         }
-//     }
-//     document.display.seconds.value=StrSec 
-//     document.display.minutes.value=StrMin; 
-//     document.display.milsecs.value=StrMil;
-//     setTimeout("timer()", 100); 
-// }
+const Time = styled.div`
+  color: darkgray;
+  font-size: 50px;
+`;
 
+const Stopwatch = () => {
+  const [count, setCount] = useState(0);
+  const [start, setStart] = useState(false);
 
+  useEffect(() => {
+    let id;
+    if (start) {
+      id = setInterval(() => {
+        setCount(count + 1);
+      }, 1000);
+    }
+    return () => clearInterval(id);
+  });
 
+  return (
+    <div>
+      <Container>
+        {count} <Time> sekund</Time>
+        <button onClick={() => setStart(true)}>Start</button>
+        <button onClick={() => setStart(false)}>Stop</button>
+        <button onClick={() => setCount(0)}>Reset</button>
+      </Container>
+    </div>
+  );
+};
 
-// export default Stopwatch
+export default Stopwatch;

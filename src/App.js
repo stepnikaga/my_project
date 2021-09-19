@@ -41,7 +41,7 @@ function App() {
       </Route>
       <Route path="/Characters/:name/:id" children={<CharacterCard />}>  </Route>
 
-      <Route path="/Stoper">
+      <Route path="/Stopwatch">
         <Stopwatch />
       </Route>
 

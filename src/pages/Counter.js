@@ -9,7 +9,7 @@ const MainCounter = styled.div`
   margin: 100px 100px 0px 100px; 
 `
 const Result = styled.h5`
-    color: green;
+    color: ${({ count }) => (count % 5 === 0 && count !== 0 ? "green" : "red")};
 
 `
 
@@ -25,11 +25,12 @@ function Counter() {
         <div className='counter'>
             <MainCounter>
         
-                {count % 5 === 0 && count !== 0 ? <Result><h5>{count}</h5></Result> : <Result>{count}</Result>}
+                {/* {count % 5 === 0 && count !== 0 ? <Result><h5>{count}</h5></Result> : <Result>{count}</Result>} */}
+                {/* <Result count={count}>{count}</Result> */}
 
                 <Button onClick={decrement} variant={"contained"} color={'secondary'}>-</Button>
-
-                <Button>{count}</Button>
+                <Result count={count}>{count}</Result>
+                
             
                 <Button onClick={increment} plus variant={"contained"} color={'secondary'}>+</Button>
                 <br></br>
@@ -41,3 +42,4 @@ function Counter() {
     )
 }
 export default Counter
+{/* <Button>{count}</Button> */}
