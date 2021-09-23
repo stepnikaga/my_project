@@ -1,6 +1,8 @@
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Button } from '@material-ui/core'
 import axios from 'axios'
+import {useHistory} from 'react-router-dom'
 
 import login from '../Image/login.jpg'
 
@@ -23,30 +25,54 @@ const Input = styled.input`
 `
 
 function Login () {
-    // const [users, setUsers] = useState(null)
+    const [users, setUsers] = useState(null)
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [successFullLogin, setSuccessFullLogin] = useState(false)
+    const history = useHistory();
 
-    // useEffect(() => {
-    //     axios.get('http://localhost:3000/users').then(result => {
-    //         console.log('result', result)
-    //         setUsers(result.data)
-    //     })
-    // }, [])
+    useEffect(() => {
+        axios.get('http://localhost:3000/users').then(result => {
+            console.log('result', result)
+            setUsers(result.data)
+        })
+    }, [])
 
+    const handleChangeEmail = (event) => setEmail(event.target.value)
+    const handleChangePassword = (event) => setPassword(event.target.value)
 
-    // if () {
-    //     return (
-    //        <div>Brak danych</div>
-    //     )
-    // }
+    const user = () => {
+
+        const passwordOk = {
+            "email": email,
+            "password": password,
+        }
+        console.log('test')
+        let login = false
+
+        users.map(user => user.email === passwordOk.email && user.password === passwordOk.password ? login = true : login = false)
+        console.log('login', login)
+        if (login) {
+            history.push('/LoginS')
+            
+        }
+    }
+    
+
+    if (!users) {
+        return (
+           <div>Brak użytkownika w bazie</div>
+        )
+    }  
 
 
     return (
         <div>
             <Container>
                 <FormContainer>
-                    <Input type='text' placeholder='e-mail'/>
-                    <Input type='password' placeholder='hasło'/>
-                    <Button onClick variant={'contained'} color={'secondary'}>
+                    <Input type='text' placeholder='e-mail' onChange={handleChangeEmail}/>
+                    <Input type='password' placeholder='hasło' onChange={handleChangePassword}/>
+                    <Button onClick={user} variant={'contained'} color={'secondary'}>
                         Zaloguj się 
                     </Button>
                 </FormContainer>

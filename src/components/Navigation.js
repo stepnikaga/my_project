@@ -42,8 +42,8 @@ function Navigation() {
           <Link to="/stopwatch"><Button>Stoper</Button></Link>
           <Link to="/counter"><Button>Licznik</Button></Link>
           <Link to="/characters"><Button>Lista postaci</Button></Link>
-          <Link to="/registration"><Button>Rejestracja</Button></Link>
-          <Link to="/login"><Button variant="contained" color="secondary">Logowanie</Button></Link>
+          <Link to="/registration"><Button variant="light" color="secondary">Rejestracja</Button></Link>
+          <Link to="/login"><Button variant="light" color="secondary">Logowanie</Button></Link>
         </Toolbar>
       </AppBar>
     </div>

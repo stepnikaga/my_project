@@ -24,6 +24,10 @@ const Input = styled.input`
 
 function Registration () {
     const [users, setUsers] = useState(null)
+    const [name, setName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
     useEffect(() => {
         axios.get('http://localhost:3000/users').then(result => {
@@ -31,14 +35,18 @@ function Registration () {
             setUsers(result.data)
         })
     }, [])
+    const handleChangeName = (event) => setName(event.target.value)
+    const handleChangeLastName = (event) => setLastName(event.target.value)
+    const handleChangeEmail = (event) => setEmail(event.target.value)
+    const handleChangePassword = (event) => setPassword(event.target.value)
 
+    console.log(name)
     const addUser = () => {
         const newUser = {
-            "id": 6,
-            "name":"Monika",
-            "lastName": "Iks",
-            "email": "iks@gmail.com",
-            "password": "qscnko09"
+            "name": name,
+            "lastName": lastName,
+            "email": email,
+            "password": password,
         }
         axios.post('http://localhost:3000/users', newUser)
     }
@@ -55,10 +63,10 @@ function Registration () {
         <div>
             <Container>
                 <FormContainer>
-                    <Input type='text' placeholder='Imię'/>
-                    <Input type='text' placeholder='Nazwisko'/>
-                    <Input type='text' placeholder='e-mail'/>
-                    <Input type='password' placeholder='hasło'/>
+                    <Input type='text' placeholder='Imię' onChange={handleChangeName}/>
+                    <Input type='text' placeholder='Nazwisko' onChange={handleChangeLastName}/>
+                    <Input type='text' placeholder='e-mail' onChange={handleChangeEmail}/>
+                    <Input type='password' placeholder='hasło' onChange={handleChangePassword}/>
                     <Button onClick={addUser} variant={'contained'} color={'secondary'}>
                         Zarejestruj się 
                     </Button>

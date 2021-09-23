@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core'
 
@@ -14,7 +14,7 @@ const CharacterCard = ({ name, species, image, status, gender, id}) => {
     return(
         <Link classesName={classes.link} to={`/character-list/${name}/${id}`} species={species}>
             <div className='card' data-name={name}>
-                <img className='charImage' alt={name} src={image}></img>
+                <img className='characterImage' alt={name} src={image}></img>
                 <div className='cardInfo'>
                     <h1>{name}</h1>
                     <h5>{species}</h5>

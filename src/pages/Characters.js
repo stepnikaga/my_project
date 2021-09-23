@@ -45,6 +45,12 @@ const MainContainer = styled.div`
     background-size: cover;
 
 `
+const CardContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+
+`
+
 const NEXT = 'NASTĘPNA'
 const PREV = 'POPRZEDNIA'
 const TITLE = 'LISTA POSTACI'
@@ -66,8 +72,8 @@ function Characters() {
         setCurrentPage(page -1)
     }
     useEffect(() => {
-        axios.get(`https://rickandmortyapi.com/api/character/?page=${page}`).then(res => {
-            setPostaci(res.data)
+        axios.get(`https://rickandmortyapi.com/api/character/?page=${page}`).then(response => {
+            setPostaci(response.data)
         })
 
     }, [page])
@@ -78,14 +84,15 @@ function Characters() {
     
     return(
         <div>
-            <Header 
-            filterSwitch = {FilterSwitch} 
-            />
             <MainContainer>
+
+                <Header filterSwitch= {FilterSwitch} />
                 <h3><PageButton onClick={previous}>{PREV}</PageButton>{TITLE} ({postaci?.info.count}) <PageButton onClick={next}>{NEXT}</PageButton></h3>
                     <input type='text' placeholder='Szukaj...'></input>
+                    <Header filterSwitch= {FilterSwitch} />
+                <CardContainer>
                     <CharacterList postaci={postaci}/>
-                <h3 id='footer'><PageButton onClick={previous}>{PREV}</PageButton><PageButton onClick={next}>{NEXT}</PageButton></h3>
+                </CardContainer>
             </MainContainer>
         </div>
     )

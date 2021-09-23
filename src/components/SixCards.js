@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 import sixCardsInfo from "../data/SixCardsInfo";
 
 
-
 const useStyles = makeStyles({
     mainContainer: {
         width: '100%',

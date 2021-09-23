@@ -54,4 +54,3 @@ const Home = () => {
 }
 export default Home
 
-// style={{ color: 'white'}}

@@ -5,8 +5,10 @@ import styled from "styled-components"
 
 
 const MainCounter = styled.div`
-  background-color: #b2b2b2;
-  margin: 100px 100px 0px 100px; 
+    width: 100vw;
+    height: 100vw;
+    background-color: #b2b2b2;
+    margin: 70px 100px 0px 0px; 
 `
 const Result = styled.h5`
     color: ${({ count }) => (count % 5 === 0 && count !== 0 ? "green" : "red")};
@@ -14,32 +16,22 @@ const Result = styled.h5`
 `
 
 function Counter() {
-
     const [count, setCount] = useState(0)
     const decrement = () => setCount(count - 1)
     const increment = () => setCount(count + 1)
     const reset = () => setCount(0)
 
-     
     return (
         <div className='counter'>
-            <MainCounter>
-        
-                {/* {count % 5 === 0 && count !== 0 ? <Result><h5>{count}</h5></Result> : <Result>{count}</Result>} */}
-                {/* <Result count={count}>{count}</Result> */}
-
+            <MainCounter>        
                 <Button onClick={decrement} variant={"contained"} color={'secondary'}>-</Button>
-                <Result count={count}>{count}</Result>
-                
-            
+                <Result count={count}>{count}</Result>                
                 <Button onClick={increment} plus variant={"contained"} color={'secondary'}>+</Button>
                 <br></br>
                 <br></br>
                 <Button onClick={reset} variant={"contained"} color={'secondary'}>RESETUJ</Button>
             </MainCounter>
         </div>
-        
     )
 }
 export default Counter
-{/* <Button>{count}</Button> */}
