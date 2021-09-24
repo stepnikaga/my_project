@@ -47,7 +47,10 @@ const MainContainer = styled.div`
 `
 const CardContainer = styled.div`
     display: flex;
+    border: 2px solid black;
     flex-wrap: wrap;
+    flex-direction: column;
+    >*{width: 100%; background-color: red}
 
 `
 

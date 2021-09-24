@@ -39,7 +39,8 @@ function App() {
       <Route path="/Characters">
         <Characters />
       </Route>
-      <Route path="/Characters/:name/:id" children={<CharacterCard />}>  </Route>
+      {/* <Route path="/character/:id"> <CharacterCard /> </Route> */}
+      <Route exact path='/character/:id' component={CharacterCard} />
 
       <Route path="/Stopwatch">
         <Stopwatch />
