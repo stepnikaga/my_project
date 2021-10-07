@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
 
 
@@ -15,13 +15,14 @@ import Characters from './pages/Characters';
 import CharacterCard from './components/CharacterCard';
 
 
-function App() {
-
+function App () {
+  const [postaci, setPostaci] = useState(null)
   console.log()
 
   return (
     
     <div className="App">
+
       <Navigation />
       <Route path="/" exact>
         <Home />
@@ -37,10 +38,9 @@ function App() {
       </Route>
 
       <Route path="/Characters">
-        <Characters />
+        <Characters setPostaci={setPostaci} />  
       </Route>
-      {/* <Route path="/character/:id"> <CharacterCard /> </Route> */}
-      <Route exact path='/character/:id' component={CharacterCard} />
+      {postaci.map(item => <Router path={`/${item.id}`}>{CharacterCard}</Router>)}
 
       <Route path="/Stopwatch">
         <Stopwatch />
@@ -61,3 +61,7 @@ function App() {
 }
 
 export default App;
+
+
+  {/* <Route path="/character/:id"> <CharacterCard /> </Route> */}
+  {/* <Route exact path='/character/:id' component={CharacterCard} /> */}

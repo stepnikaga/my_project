@@ -1,26 +1,44 @@
 import React from 'react'
 import CharacterCard from './CharacterCard'
-import { Link } from 'react-router-dom'
-import { makeStyles } from '@material-ui/core'
+// import { makeStyles } from '@material-ui/core'
+import styled from "styled-components";
+
+const MainWrapper = styled.div`
+  width: 30%;
+  display: flex;
+  
+`;
 
 
-const useStyles = makeStyles({
-    link: {
-        textDecoration: 'none',
-    }
-})
+// const useStyles = makeStyles({
+//     link: {
+//         textDecoration: 'none',
+//     }
+// })
 
 function CharacterList ({ postaci }) {
+
     return (
         <div>
         
-            <div className='charContainer'>
-            {
-                postaci?.results
-                .map(({ name, species, image, status, gender, id}) => <Link to={`/character/${id}`} species={species}><CharacterCard key={id}  name={name} species={species} image={image} status={status} gender={gender} id={id}/></Link>)
-            }
-            </div>
+            <MainWrapper className='charContainer'>
+                {postaci?.results.map(
+                    ({ name, species, image, status, gender, id}) => (
+                        <CharacterCard 
+                            key={id}  
+                            name={name} 
+                            species={species} 
+                            image={image} 
+                            status={status} 
+                            gender={gender} 
+                            id={id}
+                        />
+                    )
+                )}
+            </MainWrapper>
+            
         </div>
     )
 }
 export default CharacterList
+

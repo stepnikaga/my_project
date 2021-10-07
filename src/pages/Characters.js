@@ -7,10 +7,6 @@ import arickmorty from '../Image/arickmorty.jpg';
 import FilterSwitch from '../components/FilterSwitch'
 
 
-const Header = styled.div`
-  display: flex;
-  background-color: #b2b2b2;
-`
 const PageButton = styled.button `
     line-height: 40px;
     margin: 100px 100px 20px 80px; 
@@ -49,7 +45,8 @@ const CardContainer = styled.div`
     display: flex;
     border: 2px solid black;
     flex-wrap: wrap;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
     >*{width: 100%; background-color: red}
 
 `
@@ -75,9 +72,9 @@ function Characters() {
         setCurrentPage(page -1)
     }
     useEffect(() => {
-        axios.get(`https://rickandmortyapi.com/api/character/?page=${page}`).then(response => {
-            setPostaci(response.data)
-        })
+        axios.get(`https://rickandmortyapi.com/api/character/?page=${page}`)
+            .then(response => {setPostaci(response.data)})
+            .then(result => {setPostaci(result)})
 
     }, [page])
     if(!postaci) {
@@ -88,13 +85,11 @@ function Characters() {
     return(
         <div>
             <MainContainer>
-
-                <Header filterSwitch= {FilterSwitch} />
                 <h3><PageButton onClick={previous}>{PREV}</PageButton>{TITLE} ({postaci?.info.count}) <PageButton onClick={next}>{NEXT}</PageButton></h3>
                     <input type='text' placeholder='Szukaj...'></input>
-                    <Header filterSwitch= {FilterSwitch} />
+                    <FilterSwitch />
                 <CardContainer>
-                    <CharacterList postaci={postaci}/>
+                <CharacterList postaci={postaci} />
                 </CardContainer>
             </MainContainer>
         </div>
