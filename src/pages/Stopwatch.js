@@ -34,7 +34,7 @@ const Stopwatch = () => {
       <Container>
         
         <button onClick={() => setStart(true)}>Start</button>
-        {count} <Time> sekund</Time>
+        {count} <Time> sek</Time>
         <button onClick={() => setStart(false)}>Stop</button>
         <button onClick={() => setCount(0)}>Reset</button>
         

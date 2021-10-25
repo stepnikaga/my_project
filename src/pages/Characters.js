@@ -8,7 +8,6 @@ import FilterSwitch from '../components/FilterSwitch'
 
 
 const PageButton = styled.button `
-    line-height: 40px;
     margin: 100px 100px 20px 80px; 
     display: inline-block;
     height: 60px;
@@ -16,7 +15,6 @@ const PageButton = styled.button `
     border: none;
     background-color: #282C34;
     box-shadow: 0 4px 8px 10px rgba(0,0,0,0.2);
-    text-align: center;
     cursor: pointer;
     padding: 0;
     color: whitesmoke;
@@ -31,31 +29,43 @@ const PageButton = styled.button `
         border-radius: 1px;
     }
 `
-
+const Input = styled.input`
+    padding-left: 20px;
+    width: 14%;
+    margin-left: 5%;
+`
 const MainContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 100%;
     height: 100%;
     background-image: url(${arickmorty});
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-
+    margin-top: 5px;
 `
 const CardContainer = styled.div`
     display: flex;
-    border: 2px solid black;
+    flex-direction: column;
+    justify-content: space-between;
     flex-wrap: wrap;
-    flex-direction: row;
     align-items: center;
-    >*{width: 100%; background-color: red}
-
+    width: 100vw;
+    height: 100vw;
+    flex-wrap: wrap;
+    cursor: pointer;
+    &:hover {
+        box-shadow: 0 3px 6px 8px rgba(0,0,0,0.2);
+    }
 `
 
 const NEXT = 'NASTĘPNA'
 const PREV = 'POPRZEDNIA'
-const TITLE = 'LISTA POSTACI'
+const TITLE = 'RICK AND MORTY'
 
-function Characters() {
+function Characters({ setChars }) {
     const [page, setCurrentPage] = useState(1)
     const [postaci, setPostaci] = useState(null)
       
@@ -73,8 +83,11 @@ function Characters() {
     }
     useEffect(() => {
         axios.get(`https://rickandmortyapi.com/api/character/?page=${page}`)
-            .then(response => {setPostaci(response.data)})
-            .then(result => {setPostaci(result)})
+            .then(response => {
+                setPostaci(response.data);
+                setChars(response.data.results);
+                console.log('response', response.data)
+            })
 
     }, [page])
     if(!postaci) {
@@ -83,16 +96,20 @@ function Characters() {
 
     
     return(
-        <div>
-            <MainContainer>
-                <h3><PageButton onClick={previous}>{PREV}</PageButton>{TITLE} ({postaci?.info.count}) <PageButton onClick={next}>{NEXT}</PageButton></h3>
-                    <input type='text' placeholder='Szukaj...'></input>
-                    <FilterSwitch />
-                <CardContainer>
+        <MainContainer>
+            <h3>
+                <PageButton onClick={previous}>{PREV}</PageButton>
+                Strona {page} z {postaci?.info.count}
+                <PageButton onClick={next}>{NEXT}</PageButton>
+            </h3>
+            <h2>{TITLE}</h2>
+                <Input type='text' placeholder='Szukaj...'></Input>
+                <FilterSwitch />
+            <CardContainer>
                 <CharacterList postaci={postaci} />
-                </CardContainer>
-            </MainContainer>
-        </div>
+            </CardContainer>
+        </MainContainer>
     )
 }
 export default Characters
+

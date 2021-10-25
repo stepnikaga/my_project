@@ -11,20 +11,20 @@ const sixCardsInfo = [
         id: 2,
         title: 'Stoper',
         path: '/Stopwatch',
-        description: 'Kliknij jeśli chcesz dowiedzieć się więcej',
+        description: 'Zacznij odliczanie!',
     },
     {
         id: 3,
         title: 'Licznik', 
         path: '/Counter',
-        description: 'Kliknij jeśli chcesz dowiedzieć się więcej',
+        description: 'TIK - TAK',
        
     },
     {
         id: 4,
         title: 'Lista Postaci',
-        path: '/List',
-        description: 'Kliknij jeśli chcesz dowiedzieć się więcej',
+        path: '/characters',
+        description: 'Rick & Morty zapraszają',
     },
     {
         id: 5,

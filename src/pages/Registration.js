@@ -6,12 +6,15 @@ import axios from 'axios'
 import aboutMe1 from '../Image/aboutMe1.jpg'
 
 const Container = styled.div`
+    height: 100vw;
+    background-size: 30%;
+    background-position-x: center;
     background-image: url(${aboutMe1});
     background-repeat: no-repeat;
 `
 
 const FormContainer = styled.form`
-    max-width: 40%;
+    max-width: 30%;
     margin: 10% auto;
     display: flex;
     flex-direction: column;  

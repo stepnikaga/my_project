@@ -3,28 +3,24 @@ import { makeStyles, AppBar, Toolbar,Typography, Button } from '@material-ui/cor
 import {Link} from 'react-router-dom'
 
 
-
 const useStyles = makeStyles((theme) => ({
 
   root: {
     flexGrow: 1,
-
   },
+
   menuButton: {
     marginRight: theme.spacing(2),
-
   },
+
   title: {
     flexGrow: 3,
     display: 'flex',
     flexBasis: '20vw',
     justifyContent: 'flex start',
     alignItems: 'center',
-    marginLeft: theme.spacing(2),
-     
-  },
-
-  
+    marginLeft: theme.spacing(2), 
+  }, 
 }));
 
 function Navigation() {

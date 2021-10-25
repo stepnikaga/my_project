@@ -28,7 +28,6 @@ function Login () {
     const [users, setUsers] = useState(null)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [successFullLogin, setSuccessFullLogin] = useState(false)
     const history = useHistory();
 
     useEffect(() => {

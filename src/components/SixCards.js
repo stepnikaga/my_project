@@ -1,29 +1,39 @@
 import { Container, Grid, Paper, makeStyles, Typography } from "@material-ui/core";
+import { red } from "@material-ui/core/colors";
 import { NavLink } from "react-router-dom";
+import styled from "styled-components";
 
 import sixCardsInfo from "../data/SixCardsInfo";
 
-
+// const Container = styled.div`
+//     background-color: red;
+// `
 const useStyles = makeStyles({
+    gridItem:{
+        backgroundColor: 'red',
+        width: '500%',
+        height: '400px',
+
+    },
     mainContainer: {
         width: '100%',
         padding: '90px',
         height: '100%',
-        marginTop: '0px',
-        
+        marginTop: '0px',        
     },
     title: {
+        padding: '50px',
         textTransform: 'uppercase',
         fontWeight: 'bold',
     },
     description: {
-        marginBottom: '10rem',
+        marginBottom: '8rem',
     },
     link: {
         textDecoration: 'none',
     },
     paper: {
-        backgroundColor: '#fbefcc',
+        backgroundColor: '#87bdd8',
         height: '80%',
         margin: '40px',
         textAlign: 'center',

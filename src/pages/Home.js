@@ -11,26 +11,19 @@ const HeaderContainer = styled.div`
   background-position: center;
   background-size: cover;
 `
-
 const FormContainer = styled.div`
   & {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100%;
-      width: 100%;
-      background-color: rgba(0,0,0,0.3);
   }
 `
-
 const Box = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
 `
-
-
-
 const Home = () => {
   return (
     <HeaderContainer>

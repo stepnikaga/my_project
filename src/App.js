@@ -16,8 +16,8 @@ import CharacterCard from './components/CharacterCard';
 
 
 function App () {
-  const [postaci, setPostaci] = useState(null)
-  console.log()
+  const [chars, setChars] = useState(null)
+  console.log('chars', chars)
 
   return (
     
@@ -38,9 +38,22 @@ function App () {
       </Route>
 
       <Route path="/Characters">
-        <Characters setPostaci={setPostaci} />  
+        <Characters setChars={setChars} />  
       </Route>
-      {postaci.map(item => <Router path={`/${item.id}`}>{CharacterCard}</Router>)}
+      {chars?.map(({ name, species, image, status, gender, id}) => (
+        <Route path={`/${id}`}>
+          karta postaci
+          <CharacterCard 
+            key={id}
+            name={name}
+            species={species}
+            image={image}
+            status={status}
+            gender={gender}
+            id={id}
+          />
+        </Route>
+      ))}
 
       <Route path="/Stopwatch">
         <Stopwatch />
@@ -54,14 +67,9 @@ function App () {
         <Registration />
       </Route>
 
-
     </div>  
    
   );
 }
 
 export default App;
-
-
-  {/* <Route path="/character/:id"> <CharacterCard /> </Route> */}
-  {/* <Route exact path='/character/:id' component={CharacterCard} /> */}
